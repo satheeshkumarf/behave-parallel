@@ -132,8 +132,7 @@ class MultiProcRunner(Runner):
                 else:
                     print("INFO: scenario finished: %x" % (job_id,))
         except TypeError:
-            self.results_fail = True
-            return True             
+            item.set_status('failed')            
         except Exception as e:
             print("ERROR: cannot receive status for %r: %s" % (item, e))
         return True
