@@ -411,8 +411,11 @@ class JUnitReporter(Reporter):
                     failure_type = scenario.exception.__class__.__name__
                 failure.set(u'type', failure_type)
                 failure.set(u'message', scenario.error_message or "")
-                traceback_lines = [u"Traceback:\n"] + scenario.exc_traceback
-                text = _text(u"".join(traceback_lines))
+                try:
+                    traceback_lines = [u"Traceback:\n"] + scenario.exc_traceback
+                    text = _text(u"".join(traceback_lines))
+                except:
+                    text="UNABLE TO GET"
             failure.append(CDATA(text))
             case.append(failure)
         elif (scenario.status in (Status.skipped, Status.untested)
