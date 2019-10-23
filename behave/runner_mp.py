@@ -128,10 +128,7 @@ class MultiProcRunner(Runner):
             elif isinstance(item, Scenario):
                 feature = item.feature
                 if feature.is_finished:
-                    #self._output_feature(feature)
                     return True
-                else:
-                    print("INFO: scenario finished: %x" % (job_id,))
         except TypeError:
             print("Set status as failed by QA")
             item.set_status('failed')            
