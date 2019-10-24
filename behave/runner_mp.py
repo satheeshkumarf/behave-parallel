@@ -123,15 +123,10 @@ class MultiProcRunner(Runner):
 
         try:
             item.recv_status(result)
-            if isinstance(item, Feature):
-                self._output_feature(item)
-            elif isinstance(item, Scenario):
+            if isinstance(item, Scenario):
                 feature = item.feature
                 if feature.is_finished:
-                    return True
-        except TypeError:
-            print("Set status as failed by QA")
-            item.set_status('failed')            
+                    return True          
         except Exception as e:
             print("ERROR: cannot receive status for %r: %s" % (item, e))
         return True
