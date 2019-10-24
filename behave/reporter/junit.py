@@ -415,7 +415,7 @@ class JUnitReporter(Reporter):
                     traceback_lines = [u"Traceback:\n"] + scenario.exc_traceback
                     text = _text(u"".join(traceback_lines))
                 except:
-                    text="UNABLE TO GET"
+                    text="Please check scenario details to get further info"
             failure.append(CDATA(text))
             case.append(failure)
         elif (scenario.status in (Status.skipped, Status.untested)
